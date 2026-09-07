@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Page() { return <main className="grid min-h-screen place-items-center bg-[#07111f] p-6 text-center text-white"><div><h1 className="text-3xl font-bold">Access restricted</h1><p className="mt-3 text-slate-300">Your current role cannot access this workspace.</p><Link className="mt-6 inline-block rounded-xl bg-blue-600 px-4 py-2 font-semibold" href="/">Return home</Link></div></main>; }
