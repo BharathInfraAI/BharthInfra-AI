@@ -4,8 +4,46 @@ export function GlassCard({ children, className = "" }: { children: ReactNode; c
   return <section className={`rounded-2xl border border-white/70 bg-white/65 shadow-[0_18px_45px_rgba(68,100,150,0.12)] backdrop-blur ${className}`}>{children}</section>;
 }
 
-export function CivicPageHeader({ eyebrow, title, description, action }: { eyebrow: string; title: string; description: string; action?: string }) {
-  return <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-600">{eyebrow}</p><h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{title}</h1><p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">{description}</p></div>{action ? <button className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-500" type="button">{action}</button> : null}</div>;
+export function CivicPageHeader({
+  eyebrow,
+  title,
+  description,
+  action,
+  onAction,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action?: string;
+  onAction?: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-600">
+          {eyebrow}
+        </p>
+
+        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          {title}
+        </h1>
+
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+          {description}
+        </p>
+      </div>
+
+      {action ? (
+        <button
+          className="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-500"
+          type="button"
+          onClick={onAction}
+        >
+          {action}
+        </button>
+      ) : null}
+    </div>
+  );
 }
 
 export function Metric({ label, value, detail, tone = "blue" }: { label: string; value: string; detail: string; tone?: "blue" | "teal" | "amber" | "rose" }) {
